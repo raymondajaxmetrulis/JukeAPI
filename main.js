@@ -1,4 +1,9 @@
 $(document).ready(function() {
+	
+	SC.initialize({
+    client_id: 'YOUR_CLIENT_ID',
+    redirect_uri: 'http://example.com/callback'
+  	});
 
 	function Jukebox(playing) {
 		
