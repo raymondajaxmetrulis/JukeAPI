@@ -1,9 +1,13 @@
+	$.ajax(
+		{
+    		method: "GET",
+    		url: "https://accounts.spotify.com/authorize/?client_id=e27ac3b74bc446b597e782ab2fec54de&response_type=code&redirect_uri=http://localhost:8888/callback",
+    		success: function(result) {
+      			console.log(result);
+    		},
+  		});
+
 $(document).ready(function() {
-	
-	SC.initialize({
-    client_id: 'YOUR_CLIENT_ID',
-    redirect_uri: 'http://example.com/callback'
-  	});
 
 	function Jukebox(playing) {
 		
@@ -63,6 +67,24 @@ $(document).ready(function() {
 		this.addSong = function(){
 			this.playlist.push(song1, song2, song3);
 		};	
+
+		// this.spotiSong = function() {
+		// 	$.ajax(
+		// 		{
+  //   			method: "POST",
+  //   			url: "https://accounts.spotify.com/api/token",
+  //   			data: {
+  //     				"grant_type":    "authorization_code",
+  //     				"code":          code,
+  //     				"redirect_uri":  myurl,
+  //     				"client_secret": mysecret,
+  //     				"client_id":     myid,
+  //   			},
+  //   			success: function(result) {
+  //     				// handle result...
+  //   			},
+  // 			});
+  //    	}
 	};
 	
 	juke = new Jukebox(true);
