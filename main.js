@@ -1,11 +1,8 @@
-	$.ajax(
-		{
-    		method: "GET",
-    		url: "https://accounts.spotify.com/authorize/?client_id=e27ac3b74bc446b597e782ab2fec54de&response_type=code&redirect_uri=http://localhost:8888/callback",
-    		success: function(result) {
-      			console.log(result);
-    		},
-  		});
+SC.initialize({
+  	client_id: 'fd4e76fc67798bfa742089ed619084a6',
+  	redirect_uri: 'http://localhost:8888/'
+});
+
 
 $(document).ready(function() {
 
@@ -15,6 +12,8 @@ $(document).ready(function() {
 		var played = $("#player").get(0);
 		this.playlist = [];
 		var songNum = 0;
+		this.SCtrack = [];
+		this.SCplaylist = [];
 
 		this.startNpause = function() {
 			document.onkeydown = function(Sss) {
@@ -68,24 +67,20 @@ $(document).ready(function() {
 			this.playlist.push(song1, song2, song3);
 		};	
 
-		// this.spotiSong = function() {
-		// 	$.ajax(
-		// 		{
-  //   			method: "POST",
-  //   			url: "https://accounts.spotify.com/api/token",
-  //   			data: {
-  //     				"grant_type":    "authorization_code",
-  //     				"code":          code,
-  //     				"redirect_uri":  myurl,
-  //     				"client_secret": mysecret,
-  //     				"client_id":     myid,
-  //   			},
-  //   			success: function(result) {
-  //     				// handle result...
-  //   			},
-  // 			});
-  //    	}
+		this.addSCtrack = function() {
+	
+       		path = $("#trackUrl").val();
+			SC.resolve(path).then(function(tracks){
+     			trackid = "tracks/" + tracks.id;
+     			SC.get(trackid).then(function(tracks){
+					played.src = tracks.stream_url + "?client_id=fd4e76fc67798bfa742089ed619084a6";
+
+				});
+     		});
+		};
+     	
 	};
+		
 	
 	juke = new Jukebox(true);
 
@@ -106,4 +101,5 @@ $(document).ready(function() {
 	juke.stop();
 	
 });
+
 

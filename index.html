@@ -1,23 +1,26 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		
 	</head>
 	<body>
-
+		<script src="http://code.jquery.com/jquery-1.7.2.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<script src="https://connect.soundcloud.com/sdk/sdk-3.1.2.js"></script>
 		<script src="main.js"></script>
 		<div>
 			<p id="songName">Lord of the Rings</p>
 			<p id="songArtist">Samiyam</p>
 			<p id="songAlbum">Animals Have Feelings</p>
 		</div>
-		<audio controls id="player">
-	 		<source src="song1.mp3" type="audio/mp3"> 		
+		<audio controls id="player"> 		
 		</audio>
 		<button id="prevBtn" onclick="juke.loadPrev()">Prev</button>
 		<button id="nextBtn" onclick="juke.loadNext()">Next</button>
 		<button id="shuffleBtn" onclick="juke.loadRandom()">Shuffle</button>
-		<br>
+		<br><br><br>
+		<input id="trackUrl" value="Input track URL"></input>
+		<button id="ScBtn" onclick="juke.addSCtrack()">Play Soundcloud track</button>
 		<h1>Press the s key to play and pause, press the 0 key to stop the song</h1>
 		
 	</body>
