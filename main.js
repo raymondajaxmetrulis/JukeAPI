@@ -28,7 +28,7 @@ $(document).ready(function() {
     			if (Sss.keyCode == 83 && this.nowPlaying) {
     				this.nowPlaying = false;
     				played.play();
-        		} else {
+        		} else if (Sss.keyCode == 83) {
         			this.nowPlaying = true;
         			played.pause();
 				}
@@ -90,10 +90,7 @@ $(document).ready(function() {
 			});
 		};
 	};
-		SC.resolve('https://soundcloud.com/tankandthebangas/boxes-and-squares').then(function(results){
-			console.log(results);
-		});
-	
+
 	juke = new Jukebox(true);
 
 	var Playlist = function Playlist(name, artist, album, source) {
